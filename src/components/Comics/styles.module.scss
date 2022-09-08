@@ -1,0 +1,18 @@
+.contentContainer {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: calc(100vh - 5rem);
+
+}
+
+.listComics {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    img {
+        width: 18rem;
+        height: 22rem;
+    }
+}
