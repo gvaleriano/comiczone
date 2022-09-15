@@ -1,6 +1,8 @@
 import axios from 'axios';
 import md5 from 'md5';
 import { useEffect, useState } from 'react';
+import { api } from '../../services/api';
+import Router from "next/router";
 
 import styles from './styles.module.scss';
 const publickKey = '58dc25a900c010b4f3a24cf0a3a326ce';
@@ -24,9 +26,16 @@ interface ResponseData {
 export function Comics() {
     const [comics, setComics] = useState<ResponseData[]>([]);
     useEffect(() => {
-        axios.get(`http://gateway.marvel.com/v1/public/comics?ts=${time}&apikey=${publickKey}&hash=${hash}`)
-            .then(response => setComics(response.data.data.results))
-            .catch(err => console.log(err));
+
+        api.get('/me').then(response => {
+            if (response.status === 200) {
+                axios.get(`http://gateway.marvel.com/v1/public/comics?ts=${time}&apikey=${publickKey}&hash=${hash}`)
+                    .then(response => setComics(response.data.data.results))
+                    .catch(err => console.log(err));
+            }
+        }).catch(err => {
+            Router.push('/notallowed')
+        })
     }, []);
     return (
         <main className={styles.contentContainer}>

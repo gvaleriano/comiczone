@@ -15,17 +15,22 @@ interface NewTransactionModalProps {
 
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
     const { register, handleSubmit } = useForm();
-    const { createTransaction } = useTransactions();
     const { signIn } = useContext(AuthContext);
 
-    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [type, setType] = useState('bd');
 
-    function handleSignIn(data) {
-        signIn(data, null, null);
+    async function handleSignIn(event: FormEvent) {
+        event.preventDefault();
+
+        const data = {
+            email,
+            password
+        }
+        await signIn(data);
     }
+    /*
     async function handleCreateNewTransaction(event: FormEvent) {
         event.preventDefault();
 
@@ -40,7 +45,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
         setPassword('');
         setType('');
         onRequestClose();
-    }
+    }*/
 
     return (
         <Modal
@@ -57,17 +62,8 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
 
                 </img>
             </button>
-            <form className={styles.containerForm} onSubmit={handleCreateNewTransaction}>
-                <h2> Cadastrar novo usuario</h2>
-
-
-                <input
-                    {...register('name')}
-                    placeholder='Nome completo'
-                    name="name"
-                    value={name}
-                    onChange={event => setName(event.target.value)}
-                />
+            <form className={styles.containerForm} onSubmit={handleSignIn}>
+                <h2> Sign In</h2>
                 <input
                     {...register('email')}
                     type="email"
@@ -84,7 +80,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
                     value={password}
                     onChange={event => setPassword(event.target.value)}
                 />
-                <button type="submit">Cadastrar</button>
+                <button type="submit">Login</button>
             </form>
         </Modal >
     )

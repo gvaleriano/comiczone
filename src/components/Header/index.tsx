@@ -37,7 +37,9 @@ export function Header() {
             <div className={styles.headerContent}>
                 <img src="/images/logo_comic.svg" alt="Comic Zone" />
                 <nav>
-                    <a className={styles.active}>Home</a>
+                    <Link href={`/`}>
+                        <a className={styles.active}>Home</a>
+                    </Link>
                     <Link href={`/comics`}>
                         <a>Comics</a>
                     </Link>
@@ -54,8 +56,12 @@ export function Header() {
             <div className={styles.headerContent}>
                 <img src="/images/logo_comic.svg" alt="Comic Zone" />
                 <nav>
-                    <a className={styles.active}>Home</a>
-                    <a>Comics</a>
+                    <Link href={`/`}>
+                        <a className={styles.active}>Home</a>
+                    </Link>
+                    <Link href={`/comics`}>
+                        <a>Comics</a>
+                    </Link>
                 </nav>
 
                 <SignInButton />

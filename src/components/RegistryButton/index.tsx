@@ -32,7 +32,7 @@ export function RegistryButton({ onOpenNewTransactionModal }: SignInProps) {
 
         <button type="button" className={styles.regButton} onClick={onOpenNewTransactionModal}>
             <FaUserLock color="#EBA417" />
-            Register a new user with email
+            Login with email
         </button>
     )
 }
