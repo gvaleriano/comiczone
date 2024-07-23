@@ -5,6 +5,7 @@ import { api } from '../../services/api';
 import Router from "next/router";
 
 import styles from './styles.module.scss';
+import Image from "next/image";
 const publickKey = '58dc25a900c010b4f3a24cf0a3a326ce';
 
 const privateKey = '890071ddd47c7524d0f47d2c0bc5ff473a3537dc';
@@ -46,7 +47,7 @@ export function Comics() {
                         {comics.map(comic => {
                             return (
                                 <li key={comic.id}>
-                                    <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title}></img>
+                                    <Image src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title}></Image>
                                     <span>{comic.title}</span>
                                 </li>
                             )

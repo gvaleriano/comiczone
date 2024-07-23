@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react'
 import { useState } from 'react';
 import { NewTransactionModal } from '../../components/NewTransactionModal';
 import { RegistryButton } from '../RegistryButton';
+import Image from "next/image";
 
 
 Modal.setAppElement('#__next');
@@ -35,7 +36,7 @@ export function Header() {
     return isLoggedIn ? (
         <header className={styles.headerContainer}>
             <div className={styles.headerContent}>
-                <img src="/images/logo_comic.svg" alt="Comic Zone" />
+                <Image src="/images/logo_comic.svg" alt="Comic Zone" />
                 <nav>
                     <Link href={`/`}>
                         <a className={styles.active}>Home</a>
@@ -54,7 +55,7 @@ export function Header() {
         <header className={styles.headerContainer}>
 
             <div className={styles.headerContent}>
-                <img src="/images/logo_comic.svg" alt="Comic Zone" />
+                <Image src="/images/logo_comic.svg" alt="Comic Zone" />
                 <nav>
                     <Link href={`/`}>
                         <a className={styles.active}>Home</a>

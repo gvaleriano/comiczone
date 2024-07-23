@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { SubscribreButton } from '../components/SubscribeButton';
 import { stripe } from '../services/stripe';
 import styles from './home.module.scss'
+import Image from "next/image";
 
 //Tipagem Home
 interface HomeProps {
@@ -31,7 +32,7 @@ export default function Home({ product }: HomeProps) {
           </p>
           <SubscribreButton priceId={product.priceId} />
         </section>
-        <img src="/images/hero.svg" alt="Super Hero" />
+        <Image src="/images/hero.svg" alt="Super Hero" />
       </main>
     </>
   )
@@ -40,7 +41,7 @@ export default function Home({ product }: HomeProps) {
 //Função para pagina estatica ser salva no next e não ficar fazendo varias requisições sem necessidade
 export const getStaticProps: GetStaticProps = async () => {
 
-  const price = await stripe.prices.retrieve('price_1LfXU0IO5sbXwSYQr7fp1zSX')
+  const price = {id: "price_1MoBy5LkdIwHu7ixZhnattbh", "unit_amount": 1000}//await stripe.prices.retrieve('price_1MoBy5LkdIwHu7ixZhnattbh')
 
   const product = {
     priceId: price.id,

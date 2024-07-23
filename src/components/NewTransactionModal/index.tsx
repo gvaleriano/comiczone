@@ -5,6 +5,7 @@ import { useTransactions } from '../../hooks/useTransactions';
 
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/AuthContext';
+import Image from "next/image";
 
 
 interface NewTransactionModalProps {
@@ -58,9 +59,9 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
                 onClick={onRequestClose}
                 className="react-modal-close"
             >
-                <img src='/images/logo_comic.svg' alt="Fechar modal">
+                <Image src='/images/logo_comic.svg' alt="Fechar modal">
 
-                </img>
+                </Image>
             </button>
             <form className={styles.containerForm} onSubmit={handleSignIn}>
                 <h2> Sign In</h2>
